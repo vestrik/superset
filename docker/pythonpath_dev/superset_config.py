@@ -186,3 +186,5 @@ TALISMAN_CONFIG = {
 
 # для незалогиненых
 # PUBLIC_ROLE_LIKE = "Gamma"
+
+ENABLE_TEMPLATE_PROCESSING = TRUE
