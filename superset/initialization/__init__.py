@@ -28,7 +28,7 @@ from flask import abort, Flask, redirect, request, session, url_for
 from flask_appbuilder import expose, IndexView
 from flask_appbuilder.api import safe
 from flask_appbuilder.utils.base import get_safe_redirect
-from flask_babel import gettext as __, refresh
+from flask_babel import lazy_gettext as __, refresh
 from flask_compress import Compress
 from flask_session import Session
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -235,7 +235,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_link(
             "Home",
             label=__("Home"),
-            href="/superset/welcome/",
+            href="/superset/dashboard/11/",
             cond=lambda: bool(appbuilder.app.config["LOGO_TARGET_PATH"]),
         )
 
@@ -716,11 +716,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
 
 class SupersetIndexView(IndexView):
-    @expose("/")
-    def index(self) -> FlaskResponse:
-        return redirect(url_for("Superset.welcome"))
 
-    @expose("/lang/<string:locale>")
+  @expose("/lang/<string:locale>")
     @safe
     def patch_flask_locale(self, locale: str) -> FlaskResponse:
         """
@@ -740,3 +737,8 @@ class SupersetIndexView(IndexView):
         if redirect_to := request.headers.get("Referer"):
             return redirect(get_safe_redirect(redirect_to))
         return redirect(self.get_redirect())
+
+    @expose("/")
+    def index(self) -> FlaskResponse:        
+        return redirect("/superset/dashboard/11/")
+

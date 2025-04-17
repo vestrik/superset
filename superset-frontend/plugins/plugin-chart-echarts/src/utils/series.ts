@@ -481,6 +481,8 @@ export function getLegendProps(
     case LegendOrientation.Top:
     default:
       legend.top = 0;
+      legend.left = 0;
+      legend.width = '87%';
       legend.right = zoomable ? TIMESERIES_CONSTANTS.legendTopRightOffset : 0;
       break;
   }
