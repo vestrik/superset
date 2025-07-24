@@ -72,6 +72,7 @@ services:
     depends_on:
       superset-init:
         condition: service_completed_successfully
+
     volumes:
       - ./superset/static/assets/images/logo.png:/app/superset/static/assets/images/logo.png
       - ./superset/static/assets/images/favicon.png:/app/superset/static/assets/images/favicon.png
@@ -125,8 +126,6 @@ services:
           "CMD-SHELL",
           "celery -A superset.tasks.celery_app:app inspect ping -d celery@$$HOSTNAME",
         ]
-    environment:
-      SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
 
   superset-worker-beat:
     build:
@@ -146,8 +145,6 @@ services:
     volumes: *superset-volumes
     healthcheck:
       disable: true
-    environment:
-      SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
 
 volumes:
   superset_home:
