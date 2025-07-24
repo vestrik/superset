@@ -24,7 +24,7 @@ ARG PY_VER=3.11.13-slim-bookworm
 ARG BUILDPLATFORM=${BUILDPLATFORM:-amd64}
 
 # Include translations in the final build
-ARG BUILD_TRANSLATIONS="false"
+ARG BUILD_TRANSLATIONS="true"
 
 ######################################################################
 # superset-node-ci used as a base for building frontend assets and CI

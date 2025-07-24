@@ -136,3 +136,55 @@ try:
     )
 except ImportError:
     logger.info("Using default Docker config...")
+    
+LANGUAGES = {
+    "en": {"flag": "us", "name": "English"},
+    "zh": {"flag": "cn", "name": "Chinese"},
+    "zh_TW": {"flag": "tw", "name": "Traditional Chinese"},
+    "ru": {"flag": "ru", "name": "Russian"},
+}
+
+BABEL_DEFAULT_LOCALE = "ru"
+
+APP_ICON='/static/assets/images/logo.png'
+APP_NAME = "SWIFT"
+FAVICONS = [{"href": "/static/assets/images/favicon.png"}]
+LOGO_TARGET_PATH = "/superset/dashboard/11"
+
+MAPBOX_API_KEY = 'pk.eyJ1IjoibWdvbG92YW5vdiIsImEiOiJjbTM3OTdxcGkwNnQ0Mm5yMW1uN29mY2t2In0.WTLL-sxLmKOIX4WFR4zkCw'
+SUPERSET_DASHBOARD_POSITION_DATA_LIMIT = 231070
+
+# smtp server configuration
+EMAIL_NOTIFICATIONS = True  # all the emails are sent using dryrun
+SMTP_HOST = 'smtphz.qiye.163.com'
+SMTP_STARTTLS = True
+SMTP_SSL = True
+SMTP_USER = 'service@swiftrus.ru'
+SMTP_PORT = 465
+SMTP_PASSWORD = 'ATAfSATA1'
+SMTP_MAIL_FROM = 'service@swiftrus.ru'
+
+FEATURE_FLAGS = {       
+    "DYNAMIC_PLUGINS": True,
+    "ENABLE_TEMPLATE_PROCESSING": True,
+    "ENABLE_JAVASCRIPT_CONTROLS": True, 
+    "TAGGING_SYSTEM": True,
+    "EMBEDDED_SUPERSET": True,    
+    "ALERT_REPORTS": True,
+    "ALERT_REPORT_TABS": True,    
+    "DASHBOARD_RBAC": True,    
+    "ENABLE_ADVANCED_DATA_TYPES": True,       
+    "ALLOW_FULL_CSV_EXPORT": True,
+    "ALLOW_ADHOC_SUBQUERY": True,   
+    "ENABLE_SUPERSET_META_DB": True,
+    "CHART_PLUGINS_EXPERIMENTAL": True,
+    "DATE_FORMAT_IN_EMAIL_SUBJECT": True,
+
+}
+
+TALISMAN_CONFIG = {
+        "script-src": ["'self'", "'strict-dynamic'", "'unsafe-eval'"],
+}
+
+# для незалогиненых
+# PUBLIC_ROLE_LIKE = "Gamma"
